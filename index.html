@@ -1,12 +1,487 @@
-<DOCTYPE html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Ekbacke</title>
-		<link rel="icon" href="/favicon.ico">
-	</head>
-	<body>
-		<h1>Välkommen till Ekbacke</h1>
-	</body>
-</html>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ekbacke Biodling & Hönsgård</title>
+  <meta name="description" content="Lokal honung och gårdsprodukter från Ekbacke Biodling & Hönsgård. Läs om våra produkter och hitta kontaktuppgifter.">
+  <link rel="icon" href="/favicon.ico">
+  <style>
+    :root {
+      --bg: #fffdf7;
+      --surface: #ffffff;
+      --surface-alt: #fff7db;
+      --text: #2f2a1f;
+      --muted: #6e6657;
+      --accent: #e3ad22;
+      --accent-dark: #a06d00;
+      --border: #ecdca7;
+      --shadow: 0 10px 30px rgba(60, 45, 10, 0.08);
+      --radius: 22px;
+      --max-width: 1100px;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, #fff4bf 0%, var(--bg) 32%),
+        var(--bg);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 253, 247, 0.88);
+      border-bottom: 1px solid rgba(236, 220, 167, 0.7);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text strong {
+      font-size: 1rem;
+    }
+
+    .brand-text span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 1rem;
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy p {
+      margin: 0 0 1.4rem;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.42rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--accent-dark);
+      font-size: 0.92rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.9rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .button-primary {
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .button-secondary {
+      background: #fff;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #fff9e9 0%, #fff4cf 100%);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card-image {
+      aspect-ratio: 1 / 1;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at 30% 30%, #ffeaa0 0%, #f8cb40 45%, #d89d12 100%);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hero-card-image img {
+      width: 42%;
+      max-width: 180px;
+    }
+
+    .hero-card p {
+      margin: 1rem 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .section {
+      padding: 1.2rem 0 3.5rem;
+    }
+
+    .section-title {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      line-height: 1.1;
+    }
+
+    .section-lead {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      max-width: 60ch;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.25rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-alt {
+      background: var(--surface-alt);
+    }
+
+    .list {
+      margin: 1rem 0 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .list li + li {
+      margin-top: 0.45rem;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .contact-item {
+      padding: 0.9rem 1rem;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(236, 220, 167, 0.9);
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cards,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <img src="/favicon.ico" alt="Ekbacke logotyp">
+        <div class="brand-text">
+          <strong>Ekbacke</strong>
+          <span>Biodling & Hönsgård</span>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Huvudmeny">
+        <a href="#om-oss">Om oss</a>
+        <a href="#produkter">Produkter</a>
+        <a href="#kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-badge">Lokal honung från gården</div>
+          <h1>Ekbacke Biodling & Hönsgård</h1>
+          <p>
+            Välkommen till Ekbacke. Här producerar vi honung med omtanke,
+            nära naturen och i liten skala. På sidan kan du läsa mer om våra
+            produkter och hitta kontaktuppgifter.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#produkter">Se våra produkter</a>
+            <a class="button button-secondary" href="#kontakt">Kontakta oss</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="hero-card-image">
+            <img src="/favicon.ico" alt="Bi i hexagon">
+          </div>
+          <p>
+            Naturlig honung, producerad lokalt och tappad med fokus på smak,
+            kvalitet och närhet till gården.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="om-oss">
+      <div class="container">
+        <h2 class="section-title">Om oss</h2>
+        <p class="section-lead">
+          Ekbacke är en småskalig biodling och hönsgård. Vi vill erbjuda ärliga,
+          lokala produkter och samtidigt dela med oss av lite mer information om
+          hur honung blir till.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Småskalig biodling</h3>
+            <p>
+              Våra bin samlar nektar från omgivningen under säsongen, vilket ger
+              honung med lokal karaktär och varierande smak.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Naturlig produkt</h3>
+            <p>
+              Honungen hanteras varsamt för att bevara smak, doft och konsistens
+              så långt det går.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Från gård till kund</h3>
+            <p>
+              Hos oss står närhet, enkelhet och personlig kontakt i centrum.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="produkter">
+      <div class="container">
+        <h2 class="section-title">Produkter</h2>
+        <p class="section-lead">
+          Här kan du läsa lite kort om vad vi erbjuder. Du kan senare fylla på med
+          pris, storlek på burkar och tillgänglighet när du vill.
+        </p>
+
+        <div class="split">
+          <article class="panel panel-alt">
+            <h3>Honung</h3>
+            <p>
+              Vår honung är lokalproducerad och varierar naturligt i smak och färg
+              beroende på säsong och vilka växter bina haft tillgång till.
+            </p>
+            <ul class="list">
+              <li>Lokalt producerad</li>
+              <li>Naturlig smak och karaktär</li>
+              <li>Passar till frukost, bakning och matlagning</li>
+            </ul>
+          </article>
+
+          <article class="panel">
+            <h3>Mer från gården</h3>
+            <p>
+              På sikt kan sidan även innehålla information om andra gårdsprodukter,
+              till exempel ägg, säsongsvaror eller presentförpackningar.
+            </p>
+            <ul class="list">
+              <li>Information om tillgänglighet</li>
+              <li>Upphämtning efter överenskommelse</li>
+              <li>Personlig kontakt vid frågor</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container">
+        <h2 class="section-title">Kontakt</h2>
+        <p class="section-lead">
+          Hör gärna av dig om du vill veta mer om honungen, tillgänglighet eller
+          framtida beställningar.
+        </p>
+
+        <div class="panel">
+          <div class="contact-list">
+            <div class="contact-item">
+              <strong>E-post</strong>
+              <a href="mailto:kontakt@ekbacke.se">kontakt@ekbacke.se</a>
+            </div>
+
+            <!--<div class="contact-item">
+              <strong>Telefon</strong>
+              <a href="tel:+46700000000">070-000 00 00</a>
+            </div>-->
+
+            <div class="contact-item">
+              <strong>Plats</strong>
+              Ekbacke, Sverige
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Ekbacke Biodling & Hönsgård
+    </div>
+  </footer>
+</body>
+</html>
