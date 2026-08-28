@@ -38,17 +38,11 @@ header{
   display:flex;align-items:center;justify-content:space-between;gap:28px
 }
 .brand{display:flex;align-items:center;gap:14px}
-.hive-icon{
-  width:48px;height:56px;border:1.5px solid var(--ink);
-  position:relative;background:#fffdf8
-}
-.hive-icon:before{
-  content:"";position:absolute;left:7px;right:7px;top:15px;height:1px;background:var(--ink);
-  box-shadow:0 10px 0 var(--ink),0 20px 0 var(--ink)
-}
-.hive-icon:after{
-  content:"";position:absolute;left:14px;right:14px;top:-7px;height:12px;
-  border:1.5px solid var(--ink);background:var(--paper)
+.bee-icon{
+  width:58px;
+  height:50px;
+  flex:0 0 auto;
+  color:var(--ink);
 }
 .brand-name{font-size:2rem;letter-spacing:.14em;line-height:1}
 .brand-sub{font-size:.77rem;text-transform:uppercase;letter-spacing:.14em;margin-top:7px}
@@ -145,7 +139,12 @@ footer .brand-name{font-size:2.7rem}
   .hero,.section,.gallery{grid-template-columns:1fr}
   .hero-copy{padding:52px 26px}
   .hero-photo{min-height:430px}
-  .section.reverse .text,.section.reverse .visual{order:initial}
+  /* På mobil: alltid text först och bild därefter.
+     Desktop-layouten ovan påverkas inte. */
+  .section .hero-copy,
+  .section .text{order:1}
+  .section .hero-photo,
+  .section .visual{order:2}
   .section .text{padding:48px 28px}
   .section .visual{min-height:350px}
   .facts ul{grid-template-columns:1fr}
@@ -155,7 +154,7 @@ footer .brand-name{font-size:2.7rem}
   .nav{min-height:72px}
   .brand-name{font-size:1.55rem}
   .brand-sub{font-size:.65rem}
-  .hive-icon{width:40px;height:48px}
+  .bee-icon{width:46px;height:40px}
   .hero-photo{min-height:360px}
 }
 </style>
@@ -164,7 +163,16 @@ footer .brand-name{font-size:2.7rem}
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top">
-      <div class="hive-icon" aria-hidden="true"></div>
+      <svg class="bee-icon" viewBox="0 0 64 54" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <ellipse cx="32" cy="29" rx="10" ry="15"/>
+          <path d="M27 18c-6-9-16-9-19-2-2 5 5 12 15 12"/>
+          <path d="M37 18c6-9 16-9 19-2 2 5-5 12-15 12"/>
+          <path d="M24 25h16M23 31h18M26 37h12"/>
+          <path d="M28 14c0-5-3-8-6-10M36 14c0-5 3-8 6-10"/>
+          <path d="M22 42l-7 6M42 42l7 6"/>
+        </g>
+      </svg>
       <div>
         <div class="brand-name">EKBACKE</div>
         <div class="brand-sub">Gammaldags honung</div>
