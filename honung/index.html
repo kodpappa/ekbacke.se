@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>EKBACKE – Gammaldags honung</title>
+<meta name="description" content="Gammaldags svensk honung från egen bigård i Sätila.">
+<style>
+:root{
+  --ink:#171513;
+  --paper:#f7f2e8;
+  --paper2:#fffdf8;
+  --line:#2a2723;
+  --muted:#726b61;
+  --max:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background:var(--paper);
+  font-family:Georgia,"Times New Roman",serif;
+  line-height:1.6;
+}
+img{display:block;width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+
+header{
+  background:rgba(247,242,232,.96);
+  border-bottom:1px solid rgba(23,21,19,.28);
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(8px);
+}
+.nav{
+  min-height:86px;
+  display:flex;align-items:center;justify-content:space-between;gap:28px
+}
+.brand{display:flex;align-items:center;gap:14px}
+.hive-icon{
+  width:48px;height:56px;border:1.5px solid var(--ink);
+  position:relative;background:#fffdf8
+}
+.hive-icon:before{
+  content:"";position:absolute;left:7px;right:7px;top:15px;height:1px;background:var(--ink);
+  box-shadow:0 10px 0 var(--ink),0 20px 0 var(--ink)
+}
+.hive-icon:after{
+  content:"";position:absolute;left:14px;right:14px;top:-7px;height:12px;
+  border:1.5px solid var(--ink);background:var(--paper)
+}
+.brand-name{font-size:2rem;letter-spacing:.14em;line-height:1}
+.brand-sub{font-size:.77rem;text-transform:uppercase;letter-spacing:.14em;margin-top:7px}
+nav{display:flex;gap:30px;font:700 .82rem Arial,sans-serif;letter-spacing:.05em}
+
+.hero{
+  display:grid;grid-template-columns:1fr 1.1fr;min-height:630px;background:var(--paper2);
+  border-bottom:1px solid rgba(23,21,19,.26)
+}
+.hero-copy{
+  padding:76px clamp(34px,7vw,100px);
+  display:flex;flex-direction:column;justify-content:center;text-align:center
+}
+.hero h1{
+  font-weight:500;font-size:clamp(3.3rem,6.6vw,6.2rem);line-height:.92;
+  letter-spacing:.08em;margin:0
+}
+.script{
+  font-family:"Brush Script MT","Segoe Script",cursive;
+  font-size:clamp(2.15rem,4vw,3.8rem);line-height:1;margin:18px 0 22px
+}
+.ornament{display:flex;align-items:center;gap:14px;justify-content:center;margin:8px 0 25px}
+.ornament span{width:105px;height:1px;background:var(--ink)}
+.ornament i{width:9px;height:9px;background:var(--ink);transform:rotate(45deg)}
+.hero h2{font-size:1.7rem;margin:0 0 14px}
+.hero p{max-width:520px;margin:0 auto 18px;font-size:1.06rem}
+.hero-photo img{height:100%;object-fit:cover;object-position:center}
+
+.section{
+  min-height:510px;
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--paper2);
+  border-bottom:1px solid rgba(23,21,19,.24)
+}
+.section.alt{background:#f4eee2}
+.section .text{
+  padding:72px clamp(34px,7vw,105px);
+  display:flex;flex-direction:column;justify-content:center
+}
+.section .visual{min-height:510px}
+.section .visual img{height:100%;object-fit:cover}
+.section.reverse .text{order:2}
+.section.reverse .visual{order:1}
+.eyebrow{
+  font:700 .79rem Arial,sans-serif;
+  letter-spacing:.2em;text-transform:uppercase
+}
+.section h3{
+  margin:10px 0 8px;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  line-height:1.1;text-transform:uppercase
+}
+.rule{width:44px;height:1px;background:var(--ink);margin:14px 0 22px}
+.section p{font-size:1.05rem;margin:0 0 18px}
+
+.facts{
+  background:var(--paper);
+  padding:64px 22px 72px;
+  border-bottom:1px solid rgba(23,21,19,.24)
+}
+.facts-box{
+  max-width:760px;margin:auto;text-align:center;
+  border-top:1px dashed var(--ink);border-bottom:1px dashed var(--ink);
+  padding:34px 24px
+}
+.facts h3{font-size:1.45rem;letter-spacing:.12em;text-transform:uppercase;margin:0 0 24px}
+.facts ul{
+  list-style:none;padding:0;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;
+  max-width:680px;text-align:left
+}
+.facts li{padding-left:22px;position:relative}
+.facts li:before{content:"◆";position:absolute;left:0;font-size:.62rem;top:.33rem}
+
+.gallery{
+  display:grid;grid-template-columns:1fr 1fr;background:var(--paper2);
+  border-bottom:1px solid rgba(23,21,19,.24)
+}
+.gallery figure{margin:0;position:relative;min-height:430px;overflow:hidden}
+.gallery img{height:100%;object-fit:cover}
+.gallery figcaption{
+  position:absolute;inset:auto 0 0 0;padding:56px 28px 22px;
+  color:white;background:linear-gradient(transparent,rgba(0,0,0,.72))
+}
+.gallery b{font-size:1.2rem}
+
+footer{background:var(--paper2);text-align:center;padding:60px 20px}
+footer .brand-name{font-size:2.7rem}
+.footer-rule{width:180px;height:1px;background:var(--ink);margin:18px auto}
+.footer-small{font:700 .75rem Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
+
+@media(max-width:850px){
+  nav{display:none}
+  .hero,.section,.gallery{grid-template-columns:1fr}
+  .hero-copy{padding:52px 26px}
+  .hero-photo{min-height:430px}
+  .section.reverse .text,.section.reverse .visual{order:initial}
+  .section .text{padding:48px 28px}
+  .section .visual{min-height:350px}
+  .facts ul{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .wrap{width:min(calc(100% - 22px),var(--max))}
+  .nav{min-height:72px}
+  .brand-name{font-size:1.55rem}
+  .brand-sub{font-size:.65rem}
+  .hive-icon{width:40px;height:48px}
+  .hero-photo{min-height:360px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <div class="hive-icon" aria-hidden="true"></div>
+      <div>
+        <div class="brand-name">EKBACKE</div>
+        <div class="brand-sub">Gammaldags honung</div>
+      </div>
+    </a>
+    <nav>
+      <a href="#honungen">OM HONUNGEN</a>
+      <a href="#bigarden">OM BIGÅRDEN</a>
+	  <a href="#fragor">FRÅGOR &amp; SVAR</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="section">
+  <div class="hero-copy">
+    <h1>EKBACKE</h1>
+    <div class="script">Gammaldags honung</div>
+    <div class="ornament"><span></span><i></i><span></span></div>
+    <h2>Honung från egen bigård i Sätila</h2>
+    <p>Vår honung kommer från bina på EKBACKE i Sätila, Västergötland. Honungen slungas ur ramarna och tappas på burk utan upphettning eller annan onödig behandling.</p>
+    <p><strong>Resultatet är helt enkelt ren svensk honung – precis som bina gjorde den.</strong></p>
+  </div>
+  <div class="hero-photo">
+    <img src="assets/hero-honung.jpg" alt="Burk med EKBACKE honung">
+  </div>
+</section>
+
+<section class="section" id="honungen">
+  <div class="visual"><img src="assets/bi-lavendel.jpg" alt="Bi på lavendel"></div>
+  <div class="text">
+    <div class="eyebrow">Årets honung · Skörd 2026</div>
+    <h3>Lokal honung från Sätila</h3>
+    <div class="rule"></div>
+    <p>Bina samlar nektar från det som blommar i omgivningarna kring Sätila under vår och sommar. Därför varierar både färg, smak och konsistens från år till år – och ibland även mellan olika skördar samma år.</p>
+    <p>Det är en del av charmen med lokal honung: varje skörd speglar platsen och säsongen där bina har arbetat.</p>
+  </div>
+</section>
+
+<section class="section" id="bigarden">
+  <div class="text">
+    <div class="eyebrow">Från kupa till burk</div>
+    <h3>Enkelt och varsamt</h3>
+    <div class="rule"></div>
+    <p>Med <em>gammaldags</em> menar vi ingen särskild honungssort. Det är vårt sätt att beskriva hur vi vill hantera honungen: enkelt och varsamt.</p>
+    <p>Honungen skördas från våra egna bisamhällen, slungas ur vaxkakorna och tappas på burk.</p>
+    <p><strong>Ingen onödig behandling, inga tillsatser – bara honung.</strong></p>
+  </div>
+  <div class="visual"><img src="assets/ram-med-bin.jpg" alt="Ram med bin i bigården"></div>
+</section>
+
+<section class="section" id="fragor">
+  <div class="visual"><img src="assets/honungskaka.jpg" alt="Honungskaka med rinnande honung"></div>
+  <div class="text">
+    <div class="eyebrow">Frågor &amp; svar</div>
+    <h3>Har honungen blivit hård?</h3>
+    <div class="rule"></div>
+    <p>Honung kristalliserar naturligt med tiden. Det betyder inte att den har blivit gammal eller dålig – tvärtom är det helt normalt för äkta honung.</p>
+    <p>Vill du ha den mer flytande kan burken värmas försiktigt i ett vattenbad. Undvik hög temperatur om du vill behålla honungens smak och karaktär.</p>
+    <p><strong>Bäst före-datumet är ett kvalitetsdatum. Rätt förvarad honung har mycket lång hållbarhet.</strong></p>
+  </div>
+  
+</section>
+
+<section class="facts">
+  <div class="facts-box">
+    <h3>Några snabba fakta</h3>
+    <ul>
+      <li>100 % svensk honung</li>
+      <li>Från egen bigård i Sätila, Västergötland</li>
+      <li>Skördad och tappad med varsam hand</li>
+      <li>Inga tillsatser</li>
+      <li>Skörd 2026</li>
+      <li>Förvaras bäst i rumstemperatur</li>
+    </ul>
+  </div>
+</section>
+
+
+</main>
+
+<footer>
+  <div class="brand-name">EKBACKE</div>
+  <div class="footer-rule"></div>
+  <div class="footer-small">Sätila · Sverige</div>
+  <p>Svensk honung från egen bigård · Skörd 2026</p>
+</footer>
+</body>
+</html>
